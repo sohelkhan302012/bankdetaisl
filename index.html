@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank Account Interface</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="account-container">
+      <h2>Account Overview</h2>
+      <div class="account-details">
+        <div>
+          Account Holder Name: <span id="accountHolderNamedtl"> </span>
+        </div>
+        <div>Age:<span id="accountHolderAgedtl"></span></div>
+        <div>Account Number:<span id="accountNumdtl"></span></div>
+        <div>Bank Name:<span id="bankNamedtl"></span></div>
+        <div>IFSC Code:<span id="bankifscdtl"></span></div>
+        <div>
+          Account Balance:<span>₹</span
+          ><span id="accountHolderBalancedtl"></span>
+        </div>
+        <div>Address:<span id="accountHolderAddressdtl"></span></div>
+        <div>Account Type:<span id="AccountTypedtl"></span></div>
+      </div>
+      <div class="button-container">
+        <button id="Withdraw" onclick="withdraw()">Withdraw</button>
+        <button id="Deposit" onclick="deposit()">Deposit</button>
+        <button id="CheckBalance" onclick="getAccountBalance()">Check Balance</button>
+        <button id="PrintStatement" onclick="getAccountStatement()">Print Statement</button>
+        <button class="open-popup-btn" onclick="openPopup()">
+          Open Account Form
+        </button>
+      </div>
+    </div>
+
+    <!-- ---------- -->
+
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+      <div class="popup-form">
+        <button class="close-btn" onclick="closePopup()">×</button>
+        <h2>Account Details Form</h2>
+        <form id="accountForm" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="accountHolderName">Account Holder Name</label>
+            <input
+              type="text"
+              id="accountHolderName"
+              oninput="this.value = this.value.replace(/[^a-zA-Z ]/g,'')"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="accountHolderAge">Account Holder Age</label>
+            <input
+              type="text"
+              id="accountHolderAge"
+              maxlength="3"
+              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="bankName">Bank Name</label>
+            <input
+              type="text"
+              id="bankName"
+              oninput="this.value = this.value.replace(/[^a-zA-Z ]/g,'')"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="accountHolderAddress">Account Holder Address</label>
+            <input
+              type="text"
+              id="accountHolderAddress"
+              oninput="this.value = this.value.replace(/[^a-zA-Z0-9 ,.-/]/g,'')"
+              required
+            />
+          </div>
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
